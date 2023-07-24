@@ -30,6 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ac.pokemonapp.ui.theme.Typography
 
 @Composable
 fun PokemonStats(modifier: Modifier = Modifier, image: Int? = null, title: String, value: String) {
@@ -42,7 +43,7 @@ fun PokemonStats(modifier: Modifier = Modifier, image: Int? = null, title: Strin
             modifier = Modifier
                 .fillMaxSize()
                 .background(color = Color.White, shape = RoundedCornerShape(12.dp))
-                .padding(horizontal = 12.dp, vertical = 8.dp),
+                .padding(horizontal = 10.dp, vertical = 8.dp),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -58,7 +59,7 @@ fun PokemonStats(modifier: Modifier = Modifier, image: Int? = null, title: Strin
                 fontSize = 10.sp,
                 lineHeight = 16.sp,
                 textAlign = TextAlign.Center,
-                fontFamily = FontFamily.Monospace,
+                style = Typography.bodyLarge,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(bottom = 4.dp),
@@ -66,8 +67,7 @@ fun PokemonStats(modifier: Modifier = Modifier, image: Int? = null, title: Strin
             Text(
                 text = value,
                 fontSize = 18.sp,
-                fontWeight = FontWeight.ExtraBold,
-                fontFamily = FontFamily.Monospace
+                style = Typography.titleMedium
             )
         }
     }
@@ -75,7 +75,7 @@ fun PokemonStats(modifier: Modifier = Modifier, image: Int? = null, title: Strin
 
 
 @Composable
-fun PokemonDescription(modifier: Modifier = Modifier) {
+fun PokemonDescription(modifier: Modifier = Modifier, title: String, description: String) {
     Box(
         modifier = modifier
             .background(color = Color.White, shape = RoundedCornerShape(12.dp))
@@ -88,20 +88,16 @@ fun PokemonDescription(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Where to catch Pikachu",
-                fontSize = 18.sp,
-                fontWeight = FontWeight.ExtraBold,
-                fontFamily = FontFamily.Monospace
+                text = title,
+                fontSize = 20.sp,
+                style = Typography.titleMedium
             )
             Text(
-                text = "You can get Pikachu Pokémon from 2 km eggs, and" +
-                        "there is also a chance to catch it. You can catch" +
-                        "Pikachu at the very beginning of the game, when" +
-                        "the irst 3 Pokémon aobear on the mao.",
-                fontSize = 10.sp,
+                text = description,
+                fontSize = 12.sp,
                 textAlign = TextAlign.Center,
-                lineHeight = 16.sp,
-                fontFamily = FontFamily.Monospace,
+                style = Typography.bodyLarge,
+                lineHeight = 18.sp,
                 modifier = Modifier.padding(vertical = 8.dp)
             )
             Spacer(modifier = Modifier.weight(1f))
@@ -116,9 +112,8 @@ fun PokemonDescription(modifier: Modifier = Modifier) {
                     border = BorderStroke(width = 8.dp, color = Color(0xFFF9E2E0))
                 ) {
                     Text(
-                        text = "To Favorites",
-                        fontFamily = FontFamily.Monospace,
-                        fontWeight = FontWeight.ExtraBold,
+                        text = "TO FAVORITES",
+                        style = Typography.titleMedium,
                         color = Color(0xFFE94219)
                     )
                 }
@@ -129,9 +124,8 @@ fun PokemonDescription(modifier: Modifier = Modifier) {
                     border = BorderStroke(width = 8.dp, color = Color(0xFFE94219))
                 ) {
                     Text(
-                        text = "Open the Map",
-                        fontFamily = FontFamily.Monospace,
-                        fontWeight = FontWeight.ExtraBold,
+                        text = "OPEN THE MAP",
+                        style = Typography.titleMedium,
                         color = Color(0xFFF9E2E0)
                     )
                 }
@@ -159,6 +153,11 @@ fun PokemonStatsPreview() {
 @Composable
 fun PokemonDescriptionPreview() {
     MaterialTheme {
-        PokemonDescription()
+        PokemonDescription(
+            title = "Where to catch Pikachu?", description = "You can get Pikachu Pokémon from 2 km eggs, and" +
+                    "there is also a chance to catch it. You can catch" +
+                    "Pikachu at the very beginning of the game, when" +
+                    "the irst 3 Pokémon aobear on the mao."
+        )
     }
 }

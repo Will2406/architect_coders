@@ -17,11 +17,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.navigation
 import com.ac.pokemonapp.FavoriteScreen
 import com.ac.pokemonapp.HomeScreen
 import com.ac.pokemonapp.PokemonDetailScreen
-import com.ac.pokemonapp.R
 import com.ac.pokemonapp.SettingScreen
 
 
@@ -48,7 +46,7 @@ fun BottomNavigationBar(navController: NavHostController) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
 
-        listItems.forEachIndexed { index, item ->
+        listItems.forEachIndexed { _, item ->
             NavigationBarItem(
                 icon = { Icon(item.icon, contentDescription = item.title) },
                 label = { Text(item.title) },

@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.ac.pokemonapp.ui.theme.Typography
 
 @Composable
 fun PokemonDetailScreen() {
@@ -82,17 +83,16 @@ fun PokemonDetailScreen() {
                     Text(
                         text = "About",
                         fontSize = 24.sp,
-                        fontFamily = FontFamily.Monospace,
-                        fontWeight = FontWeight.ExtraBold,
+                        style = Typography.titleMedium,
                         color = Color.White,
                         modifier = Modifier.weight(1.5f)
                     )
                     Text(
-                        text = "All",
+                        text = "All >",
                         fontSize = 14.sp,
                         textAlign = TextAlign.End,
                         color = Color.White,
-                        fontFamily = FontFamily.Monospace,
+                        style = Typography.displayMedium,
                         modifier = Modifier.weight(0.5f)
                     )
                 }
@@ -102,12 +102,19 @@ fun PokemonDetailScreen() {
                     modifier = Modifier.padding(horizontal = 12.dp)
                 ) {
                     PokemonStats(modifier = Modifier.weight(1f), image = R.drawable.energy, title = "Attack", value = "124")
-                    PokemonStats(modifier = Modifier.weight(1f), image = R.drawable.protection,title = "Protection", value = "108")
-                    PokemonStats(modifier = Modifier.weight(1f), image = R.drawable.healt,title = "Health", value = "70")
-                    PokemonStats(modifier = Modifier.weight(1f), image = R.drawable.pokeball,title = "Chance to Catch", value = "%16")
+                    PokemonStats(modifier = Modifier.weight(1f), image = R.drawable.protection, title = "Protection", value = "108")
+                    PokemonStats(modifier = Modifier.weight(1f), image = R.drawable.healt, title = "Health", value = "70")
+                    PokemonStats(modifier = Modifier.weight(1f), image = R.drawable.pokeball, title = "Chance to Catch", value = "%16")
                 }
 
-                PokemonDescription(modifier = Modifier.padding(16.dp))
+                PokemonDescription(
+                    modifier = Modifier.padding(16.dp),
+                    title = "Where to catch Pikachu",
+                    description = "You can get Pikachu Pokémon from 2 km eggs, and" +
+                            "there is also a chance to catch it. You can catch" +
+                            "Pikachu at the very beginning of the game, when" +
+                            "the irst 3 Pokémon aobear on the mao."
+                )
             }
         }
     }
